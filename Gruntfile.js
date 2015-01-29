@@ -8,11 +8,11 @@ module.exports = function(grunt) {
       },
       prod: {
         src: ['js/**/*.js'],
-        dest: 'dist/js/compiled.js'
+        dest: 'js/compiled.js'
       },
       dev: {
         src: ['js/**/*.js'],
-        dest: 'dist/js/compiled.min.js'
+        dest: 'js/compiled.min.js'
       }
     },
     uglify: {
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       },
       prod: {
         files: {
-          'dist/js/compiled.min.js': ['dist/js/compiled.js']
+          'js/compiled.min.js': ['dist/js/compiled.js']
         }
       }
     },
@@ -37,14 +37,14 @@ module.exports = function(grunt) {
     cssmin: {
       minify: {
         expand: true,
-        cwd: 'css/',
+        cwd: 'dist/css/',
         src: ['*.css', '!*.min.css'],
         dest: 'dist/css/',
         ext: '.min.css'
       },
       combine: {
         files: {
-          'dist/css/compiled.min.css': ['dist/css/**/*.min.css']
+          'css/compiled.min.css': ['dist/css/**/*.min.css']
         }
       }
     },
@@ -62,8 +62,8 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ['dist', 'css/*.min.css', 'js/*.min.js'],
-      min: ['dist/css/main.min.css', 'dist/js/compiled.js'],
-      css: ['dist/css/main.min.css']
+      min: ['css/main.min.css', 'js/compiled.js'],
+      css: ['css/main.min.css']
     },
     connect: {
       server: {
