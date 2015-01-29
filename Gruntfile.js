@@ -7,12 +7,12 @@ module.exports = function(grunt) {
         seperator: ';'
       },
       prod: {
-        src: ['js/**/*.js'],
+        src: ['!js/compiled.js', '!js/*.min.js', 'js/**/*.js'],
         dest: 'js/compiled.js'
       },
       dev: {
-        src: ['js/**/*.js'],
-        dest: 'js/compiled.min.js'
+        src: ['!js/compiled.js', '!js/*.min.js', 'js/**/*.js'],
+        dest: 'js/compiled.js'
       }
     },
     uglify: {
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       },
       prod: {
         files: {
-          'js/compiled.min.js': ['dist/js/compiled.js']
+          'js/compiled.min.js': ['js/compiled.js']
         }
       }
     },
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'js/**/*.js'],
+      files: ['Gruntfile.js', '!js/compiled.js', 'js/**/*.js'],
       options: {
         globals: {
           jQuery: true,
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      build: ['dist', 'css/*.min.css', 'js/*.min.js'],
+      build: ['dist/', 'css/*.min.css', 'js/*.min.js'],
       min: ['css/main.min.css', 'js/compiled.js'],
       css: ['css/main.min.css']
     },
