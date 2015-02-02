@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Minnow</title>
+
         <!-- Typekit for Minnow -->
         <script src="//use.typekit.net/qxy2rle.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
+
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.min.css" type="text/css"></link>
 
         <!-- library resources -->
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
         <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
         <script type="text/javascript" src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
         <!-- angular library - needed for angular scrollbar -->
         <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -33,13 +39,13 @@
 
         <nav class="navbar">
             <div class="container-fluid">
-
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed"></button>
-                    <a href="#" class="navbar-brand">Minnow</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapsable-section">
+                        <span class="nav-icon ion-navicon"></span>
+                    </button>
+                    <a class="navbar-brand">Minnow</a>
                 </div>
-
-                <div class="navbar-collapse">
+                <div class="navbar-collapse collapse" id="nav-collapsable-section">
                     <ul class="nav navbar-nav">
                         <li><a>Explore Subjects</a></li>
                         <li><a>Explore Classes</a></li>

@@ -1,9 +1,20 @@
-.nav {
-  float: right;
+.navbar {
+  .nav {
+    float: right;
 
-  li > a {
-    &:hover {
-      background-color: inherit;
+    li > a {
+      &:hover {
+        background-color: inherit;
+      }
     }
+  }
+
+  .navbar-toggle {
+    margin: 0;
+    padding-top: 2px;
+  }
+
+  .nav-icon {
+    font-size: $font-size-scale-2;
   }
 }
