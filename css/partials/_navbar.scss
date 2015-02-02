@@ -1,0 +1,9 @@
+.nav {
+  float: right;
+
+  li > a {
+    &:hover {
+      background-color: inherit;
+    }
+  }
+}
