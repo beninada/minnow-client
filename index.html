@@ -14,55 +14,62 @@
         <link rel="stylesheet" type="text/css" href="css/compiled.min.css">
     </head>
     <body>
+        <script type="text/javascript" id="appLayoutView">
+            <div id="#navBar"></div>
+        </script>
 
-        <nav class="navbar">
+        <script type="text/template" id="navBarTemplate">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapsable-section">
+                            <span class="nav-icon ion-navicon"></span>
+                        </button>
+                        <a class="navbar-brand">Minnow</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="nav-collapsable-section">
+                        <ul class="nav navbar-nav">
+                            <li><a>Explore Subjects</a></li>
+                            <li><a>Explore Classes</a></li>
+                            <li><a>Sign Up for More Features</a></li>
+                            <li><a>Log In</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </script>
+
+        <script type="text/template">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapsable-section">
-                        <span class="nav-icon ion-navicon"></span>
-                    </button>
-                    <a class="navbar-brand">Minnow</a>
+                <!-- Rows are programmatically generated with randomly varied column widths -->
+                <div class="row">
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-2"></div>
                 </div>
-                <div class="navbar-collapse collapse" id="nav-collapsable-section">
-                    <ul class="nav navbar-nav">
-                        <li><a>Explore Subjects</a></li>
-                        <li><a>Explore Classes</a></li>
-                        <li><a>Sign Up for More Features</a></li>
-                        <li><a>Log In</a></li>
-                    </ul>
+                <div class="row">
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4"></div>
                 </div>
-
+                <div class="row">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <!-- More programmatically generated rows... -->
             </div>
-        </nav>
-
-        <div class="container">
-            <!-- Rows are programmatically generated with randomly varied column widths -->
-            <div class="row">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-2"></div>
-                <div class="col-xs-4"></div>
-                <div class="col-xs-2"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3"></div>
-                <div class="col-xs-2"></div>
-                <div class="col-xs-3"></div>
-                <div class="col-xs-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3"></div>
-                <div class="col-xs-3"></div>
-                <div class="col-xs-2"></div>
-                <div class="col-xs-2"></div>
-                <div class="col-xs-2"></div>
-            </div>
-            <!-- More programmatically generated rows... -->
-        </div>
+        </script>
 
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
