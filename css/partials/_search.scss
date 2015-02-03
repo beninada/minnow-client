@@ -22,11 +22,13 @@
 .search-dropdown {
   display: inline-block;
   margin-left: 30px;
+  width: 128px;
 
   .dropdown-menu {
     border: 0;
-    margin-top: 0;
-    min-width: 127px;
+    margin-top: -5px;
+    width: 100%;
+    min-width: 0;
 
     > li > a {
       font-weight: $font-weight-light;
@@ -38,19 +40,13 @@
   font-weight: $font-weight-light;
   background: none;
   padding: 0;
-  width: 127px;
+  width: 100%;
   margin-bottom: 5px;
 
   .ion-chevron-down {
     margin-left: 5px;
     font-size: $font-size-label;
   }
-}
-
-@media (min-width: $screen-xs) { 
-}
-
-@media (min-width: $screen-sm) { 
 }
 
 @media (min-width: $screen-md) { 
