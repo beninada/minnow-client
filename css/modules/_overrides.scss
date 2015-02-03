@@ -11,50 +11,74 @@ a {
   }
 }
 
-/* Extra-small devices (phones, 480px and up) */
+.btn {
+  &:active,
+  &:focus,
+  &:active:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+$gutter-xs: 8px;
+$gutter-sm: 8px;
+$gutter-md: 10px;
+$gutter-lg: 14px;
+
 @media (min-width: $screen-xs) { 
   .row {
     margin-bottom: 8px;
+    margin-left: -($gutter-xs / 2);
+    margin-right: -($gutter-xs / 2);
   }
 
-  *[class^="col"] {
-    padding-left: 4px;
-    padding-right: 4px;
+  *[class^="col"]{
+    padding-left: $gutter-xs / 2;
+    padding-right: $gutter-xs / 2;
   }
 }
 
-/* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm) { 
   .row {
     margin-bottom: 8px;
+    margin-left: -($gutter-sm / 2);
+    margin-right: -($gutter-sm / 2);
   }
 
-  *[class^="col"] {
-    padding-left: 4px;
-    padding-right: 4px;
+  *[class^="col"]{
+    padding-left: $gutter-sm / 2;
+    padding-right: $gutter-sm / 2;
   }
 }
 
-/* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md) {   
   .row {
     margin-bottom: 10px;
+    margin-left: -($gutter-md / 2);
+    margin-right: -($gutter-md / 2);
   }
 
   *[class^="col"]{
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: $gutter-md / 2;
+    padding-right: $gutter-md / 2;
   }
 }
 
-/* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg) {   
   .row {
     margin-bottom: 14px;
+    margin-left: -($gutter-lg / 2);
+    margin-right: -($gutter-lg / 2);
   }
 
   *[class^="col"]{
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: $gutter-lg / 2;
+    padding-right: $gutter-lg / 2;
   }
 }
