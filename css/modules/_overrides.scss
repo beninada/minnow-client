@@ -1,3 +1,8 @@
+$gutter-xs: 8px;
+$gutter-sm: 8px;
+$gutter-md: 10px;
+$gutter-lg: 14px;
+
 body {
   font-family: $font-family-sans-serif;
 }
@@ -8,5 +13,70 @@ a {
   &:hover {
     color: inherit;
     cursor: pointer;
+  }
+}
+
+.btn {
+  &:active,
+  &:focus,
+  &:active:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.row {
+  width: 100%;
+}
+
+@media (min-width: $screen-xs) { 
+  .row {
+    margin-bottom: $gutter-xs;
+    margin-left: -($gutter-xs / 2);
+    margin-right: -($gutter-xs / 2);
+  }
+
+  *[class^="col"]{
+    padding-left: $gutter-xs / 2;
+    padding-right: $gutter-xs / 2;
+  }
+}
+
+@media (min-width: $screen-sm) { 
+  .row {
+    margin-bottom: $gutter-sm;
+    margin-left: -($gutter-sm / 2);
+    margin-right: -($gutter-sm / 2);
+  }
+
+  *[class^="col"]{
+    padding-left: $gutter-sm / 2;
+    padding-right: $gutter-sm / 2;
+  }
+}
+
+@media (min-width: $screen-md) {   
+  .row {
+    margin-bottom: $gutter-md;
+    margin-left: -($gutter-md / 2);
+    margin-right: -($gutter-md / 2);
+  }
+
+  *[class^="col"]{
+    padding-left: $gutter-md / 2;
+    padding-right: $gutter-md / 2;
+  }
+}
+
+@media (min-width: $screen-lg) {   
+  .row {
+    margin-bottom: $gutter-lg;
+    margin-left: -($gutter-lg / 2);
+    margin-right: -($gutter-lg / 2);
+  }
+
+  *[class^="col"]{
+    padding-left: $gutter-lg / 2;
+    padding-right: $gutter-lg / 2;
   }
 }

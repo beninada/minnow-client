@@ -8,3 +8,11 @@ $font-size-scale-4: ceil(modular-scale($font-size-base, 4, $augmented-fourth));
 $font-size-scale-5: ceil(modular-scale($font-size-base, 5, $augmented-fourth));
 
 $font-size-label: 10px;
+
+$font-weight-thin: 100;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
