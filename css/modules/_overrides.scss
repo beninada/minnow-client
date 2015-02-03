@@ -10,3 +10,51 @@ a {
     cursor: pointer;
   }
 }
+
+/* Extra-small devices (phones, 480px and up) */
+@media (min-width: $screen-xs) { 
+  .row {
+    margin-bottom: 8px;
+  }
+
+  *[class^="col"] {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm) { 
+  .row {
+    margin-bottom: 8px;
+  }
+
+  *[class^="col"] {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md) {   
+  .row {
+    margin-bottom: 10px;
+  }
+
+  *[class^="col"]{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg) {   
+  .row {
+    margin-bottom: 14px;
+  }
+
+  *[class^="col"]{
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+}
