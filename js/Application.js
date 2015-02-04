@@ -6,11 +6,11 @@
 var MinnowApp = new Backbone.Marionette.Application();
 
 var AppLayoutView = Backbone.Marionette.LayoutView.extend({
-    template: "#appLayoutView",
+    template: "#appLayoutViewTemplate",
     className: "applicationLayout",
 
     regions: {
-    	navBar: "#navBar"
+		navbar: ".navbar"
     }
 });
 
@@ -21,7 +21,7 @@ MinnowApp.addInitializer(function() {
 	var appLayoutView = new AppLayoutView();
 	$('body').append(appLayoutView.render().el);
 
-	homepage.navBar.show(new NavigationBar());
+	appLayoutView.navbar.show(new NavigationBarView());
 });
 
 MinnowApp.start();
