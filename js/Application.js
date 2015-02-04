@@ -1,4 +1,7 @@
-define(['marionette'], function(Marionette) {
+define(['marionette', 'views/homepage/NavigationBarView', 
+	    'views/homepage/SearchBarView', 'views/homepage/TilesCollectionView'], 
+function(Marionette, NavigationBarView, 
+	     SearchBarView, TilesCollectionView) {
 	/*
 	 * File name: Application.js
 	 * Date: February 2, 2015
@@ -6,9 +9,28 @@ define(['marionette'], function(Marionette) {
 	 */
 	var MinnowApp = new Marionette.Application();
 
-	MinnowApp.on("initialize:after", function(){
-      	alert("Application has started!");
-    });
+	var AppLayoutView = Marionette.LayoutView.extend({
+	    template: "#appLayoutViewTemplate",
+	    className: "applicationLayout",
+
+	    regions: {
+			navbar: ".navbar",
+			searchBar: ".searchBar",
+			tilesCollection : ".tilesCollection"
+	    }
+	});
+
+	/*
+	 * Initialized the Minnow application.
+	 */
+	MinnowApp.addInitializer(function() {
+		var appLayoutView = new AppLayoutView();
+		$('body').append(appLayoutView.render().el);
+
+		appLayoutView.navbar.show(new NavigationBarView());
+		appLayoutView.searchBar.show(new SearchBarView());
+		appLayoutView.tilesCollection.show(new TilesCollectionView());
+	});
 
 	return MinnowApp;
 });
