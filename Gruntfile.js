@@ -2,31 +2,6 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
-      options: {
-        seperator: ';'
-      },
-      prod: {
-        src: ['!js/compiled.js', '!js/*.min.js', 'js/**/*.js'],
-        dest: 'js/compiled.js'
-      },
-      dev: {
-        src: ['!js/compiled.js', '!js/*.min.js', 'js/**/*.js'],
-        dest: 'js/compiled.js'
-      }
-    },
-    uglify: {
-      options: {
-        mangle: true,
-        compress: true,
-        preserveComments: false
-      },
-      prod: {
-        files: {
-          'js/compiled.min.js': ['js/compiled.js']
-        }
-      }
-    },
     sass: {
       dist: {
         files: {
@@ -49,7 +24,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', '!js/compiled.js', 'js/**/*.js'],
+      files: ['Gruntfile.js', '!js/compiled.js', 'js/**/*.js', '!js/domReady.js'],
       options: {
         globals: {
           jQuery: true,
@@ -81,31 +56,17 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load plugins required for project.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-
   // Default task(s).
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Run 'grunt' to minify code and connect to local server
-  grunt.registerTask('lint',    ['jshint']);
-  grunt.registerTask('minify',  ['concat:prod', 'cssmin', 'uglify:prod']);
-  grunt.registerTask('compile', ['sass']);
-  grunt.registerTask('build',   ['clean:build', 'lint', 'compile', 'minify', 'clean:min']);
+  grunt.registerTask('build',   ['clean:build', 'sass', 'cssmin', 'clean:min']);
 
   grunt.registerTask('default', ['build', 'connect', 'watch']);
   grunt.registerTask('latch',   ['build', 'watch']);
-
-  // Run 'grunt dev' to concat code and connect to local server
-  grunt.registerTask('minify-dev', ['concat:dev', 'cssmin']);
-  grunt.registerTask('build-dev', ['clean:build', 'lint', 'compile', 'minify-dev', 'clean:css']);
-  grunt.registerTask('dev', ['build-dev', 'connect', 'watch']);
-
 };

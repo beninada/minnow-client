@@ -1,5 +1,5 @@
-define([],
-function() {
+define(["marionette"],
+function(Marionette) {
 
 	var NavigationBarView = Marionette.ItemView.extend({
 		template: "#navBarTemplate"

@@ -1,28 +1,15 @@
-/*
- * File name: Application.js
- * Date: February 2, 2015
- * Description: The Application.js files 
- */
-var MinnowApp = new Backbone.Marionette.Application();
+define(['marionette'], function(Marionette) {
+	/*
+	 * File name: Application.js
+	 * Date: February 2, 2015
+	 * Description: The Application.js files 
+	 */
+	var MinnowApp = new Marionette.Application();
 
-var AppLayoutView = Backbone.Marionette.LayoutView.extend({
-    template: "#appLayoutViewTemplate",
-    className: "applicationLayout",
+	MinnowApp.on("initialize:after", function(){
+      	alert("Application has started!");
+    });
 
-    regions: {
-		navbar: ".navbar"
-    }
+	return MinnowApp;
 });
-
-/*
- * Initialized the Minnow application.
- */
-MinnowApp.addInitializer(function() {
-	var appLayoutView = new AppLayoutView();
-	$('body').append(appLayoutView.render().el);
-
-	appLayoutView.navbar.show(new NavigationBarView());
-});
-
-MinnowApp.start();
 
