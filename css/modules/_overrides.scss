@@ -46,7 +46,14 @@ h4 {
 }
 
 .row {
-  width: 100%;
+  margin-bottom: $gutter-xs;
+  margin-left: -($gutter-xs / 2);
+  margin-right: -($gutter-xs / 2);
+}
+
+*[class^="col"]{
+  padding-left: $gutter-xs / 2;
+  padding-right: $gutter-xs / 2;
 }
 
 @media (min-width: $screen-xs) { 
