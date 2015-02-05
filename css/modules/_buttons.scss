@@ -1,15 +1,10 @@
 .btn-sign-up {
-  color: $white;
   height: 38px;
   width: 195px;
   margin: 0 auto;
-  font-weight: $font-weight-light;
   border-radius: 0;
-
-  &:focus,
-  &:hover {
-    color: $white;
-  }
+  color: $white;
+  font-weight: $font-weight-light; 
 
   .ion-social-facebook,
   .ion-social-twitter {
@@ -20,24 +15,42 @@
 
 .btn-sign-up-fb {
   background-color: $fb-blue;
+  @include transition(background-color 200ms ease-out);
+
+  &:focus,
+  &:hover {
+    color: $white;
+    background-color: darken($fb-blue, 10%);
+    @include transition(background-color 200ms ease-out);
+  }
 }
 
 .btn-sign-up-twitter {
   background-color: $twitter-blue;
+  @include transition(background-color 200ms ease-out);
+
+  &:focus,
+  &:hover {
+    color: $white;
+    background-color: darken($twitter-blue, 10%);
+    @include transition(background-color 200ms ease-out);
+  }
 }
 
 .btn-close-modal {
   position: absolute;
-  font-size: $font-size-scale-2;
   top: 30px;
   right: 40px;
-  background-color: inherit;
   padding: 0;
   border: 0;
-  color: $gray;
+  background-color: inherit;
+  font-size: $font-size-scale-2;
+  color: $light-gray;
+  @include transition(color 200ms ease-out);
 
   &:focus,
   &:hover {
-    color: $gray;
+    color: $black;
+    @include transition(color 200ms ease-out);
   }
 }
