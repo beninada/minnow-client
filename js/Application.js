@@ -1,7 +1,9 @@
-define(['marionette', 'views/NavigationBarView', 
-	    'views/SearchBarView', 'views/TilesCollectionView'], 
+define(["marionette", "views/NavigationBarView", 
+	    "views/SearchBarView", "views/TilesView",
+	    "collections/Rows", "serverResponse"], 
 function(Marionette, NavigationBarView, 
-	     SearchBarView, TilesCollectionView) {
+	     SearchBarView, TilesView,
+	     Rows, serverResponse) {
 	/*
 	 * File name: Application.js
 	 * Date: February 2, 2015
@@ -16,9 +18,14 @@ function(Marionette, NavigationBarView,
 	    regions: {
 			navbar: ".navbar",
 			searchBar: ".searchBar",
-			tilesCollection : ".tilesCollection"
+			tilesView : ".tilesView"
 	    }
 	});
+
+	function getResponse() {
+		var repsonse = serverResponse();
+		return new Rows(repsonse, {parse: true});
+	}
 
 	/*
 	 * Initialized the Minnow application.
@@ -27,9 +34,11 @@ function(Marionette, NavigationBarView,
 		var appLayoutView = new AppLayoutView();
 		$('body').append(appLayoutView.render().el);
 
+		var tiles = getResponse();
+
 		appLayoutView.navbar.show(new NavigationBarView());
 		appLayoutView.searchBar.show(new SearchBarView());
-		appLayoutView.tilesCollection.show(new TilesCollectionView());
+		appLayoutView.tilesView.show(new TilesView({collection: tiles}));
 	});
 
 	return MinnowApp;

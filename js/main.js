@@ -6,8 +6,8 @@ require.config({
       	marionette : '/bower_components/marionette/lib/core/backbone.marionette',
       	'backbone.babysitter': '/bower_components/backbone.babysitter/lib/backbone.babysitter',
         'backbone.wreqr': '/bower_components/backbone.wreqr/lib/backbone.wreqr',
-        'backbone.courier': 'bower_components/backbone.courier/dist/backbone.courier.js',
-		'backbone.subviews': 'bower_components/backbone.subviews/backbone.subviews.js',
+        'backbone.courier': '/bower_components/backbone.courier/dist/backbone.courier',
+		'backbone.subviews': '/bower_components/backbone.subviews/backbone.subviews',
 		text: '/js/text'
     },
 
@@ -25,17 +25,21 @@ require.config({
 			deps : ['jquery', 'underscore'],
 			exports : 'Backbone'
 		},
-		babysitter : {
-			deps: ['backbone']
+		"backbone.babysitter" : {
+			deps: ['backbone'],
+			exports: "Babysitter"
 		},
-		wreqr: {
-			deps : ['backbone']
+		"backbone.wreqr": {
+			deps : ['backbone'],
+			exports: "Wreqr"
 		},
-		courier: {
-			deps: ['backbone']
+		"backbone.courier": {
+			deps: ['backbone'],
+			exports: "Courier"
 		},
-		subviews: {
-			deps: ['backbone']
+		"backbone.subviews": {
+			deps: ['backbone'],
+			exports: "Subviews"
 		},
 		marionette : {
 			deps: ['backbone'],
