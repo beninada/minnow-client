@@ -1,0 +1,43 @@
+.modal-backdrop.in {
+  opacity: .9;
+  background-color: white;
+  z-index: -1;
+}
+
+.modal-content {
+  position: absolute;
+  box-shadow: none;
+  background-color: inherit;
+  border: 0;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+.heading-sign-up {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.block-sign-up {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.sign-up-email {
+  display: block;
+  text-align: center;
+  color: $gray;
+
+  &:hover {
+    color: $gray;
+    text-decoration: none;
+  }
+}
+
+.sign-up-disclaimer {
+  margin-top: 20px;
+  color: $gray;
+  font-weight: $font-weight-light;
+}

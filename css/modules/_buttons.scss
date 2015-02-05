@@ -1,0 +1,43 @@
+.btn-sign-up {
+  color: $white;
+  height: 38px;
+  width: 195px;
+  margin: 0 auto;
+  font-weight: $font-weight-light;
+  border-radius: 0;
+
+  &:focus,
+  &:hover {
+    color: $white;
+  }
+
+  .ion-social-facebook,
+  .ion-social-twitter {
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+.btn-sign-up-fb {
+  background-color: $fb-blue;
+}
+
+.btn-sign-up-twitter {
+  background-color: $twitter-blue;
+}
+
+.btn-close-modal {
+  position: absolute;
+  font-size: $font-size-scale-2;
+  top: 30px;
+  right: 40px;
+  background-color: inherit;
+  padding: 0;
+  border: 0;
+  color: $gray;
+
+  &:focus,
+  &:hover {
+    color: $gray;
+  }
+}
