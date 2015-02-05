@@ -1,5 +1,5 @@
-define(['marionette', 'views/homepage/NavigationBarView', 
-	    'views/homepage/SearchBarView', 'views/homepage/TilesCollectionView'], 
+define(['marionette', 'views/NavigationBarView', 
+	    'views/SearchBarView', 'views/TilesCollectionView'], 
 function(Marionette, NavigationBarView, 
 	     SearchBarView, TilesCollectionView) {
 	/*
