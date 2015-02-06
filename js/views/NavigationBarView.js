@@ -1,5 +1,5 @@
-define(["underscore", "marionette", "templates"],
-function(_, Marionette, templates) {
+define(["underscore", "marionette", "templates", "bootstrap"],
+function(_, Marionette, templates, Bootstrap) {
 
 	var NavigationBarView = Marionette.ItemView.extend({
 		template: templates.NavBar,

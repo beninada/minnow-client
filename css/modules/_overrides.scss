@@ -16,6 +16,26 @@ a {
   }
 }
 
+h1 {
+  font-size: $font-size-scale-5;
+}
+
+h2 {
+  font-size: $font-size-scale-4;
+}
+
+h3 {
+  font-size: $font-size-scale-3;
+}
+
+h4 {
+  font-size: $font-size-scale-2;
+}
+
+h4 {
+  font-size: $font-size-scale-1;
+}
+
 .btn {
   &:active,
   &:focus,
@@ -26,7 +46,14 @@ a {
 }
 
 .row {
-  width: 100%;
+  margin-bottom: $gutter-xs;
+  margin-left: -($gutter-xs / 2);
+  margin-right: -($gutter-xs / 2);
+}
+
+*[class^="col"]{
+  padding-left: $gutter-xs / 2;
+  padding-right: $gutter-xs / 2;
 }
 
 @media (min-width: $screen-xs) { 

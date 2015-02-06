@@ -7,8 +7,9 @@ require.config({
       	'backbone.babysitter': '/bower_components/backbone.babysitter/lib/backbone.babysitter',
         'backbone.wreqr': '/bower_components/backbone.wreqr/lib/backbone.wreqr',
         'backbone.courier': '/bower_components/backbone.courier/dist/backbone.courier',
-		'backbone.subviews': '/bower_components/backbone.subviews/backbone.subviews',
-		text: '/js/text'
+    		'backbone.subviews': '/bower_components/backbone.subviews/backbone.subviews',
+    		text: '/js/text',
+        bootstrap: '/bower_components/bootstrap/dist/js/bootstrap'
     },
 
 	shim : {
