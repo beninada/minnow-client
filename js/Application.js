@@ -1,25 +1,19 @@
-define(["marionette", "views/NavigationBarView", 
-	    "views/SearchBarView", "views/TilesView",
-	    "collections/Rows", "serverResponse"], 
-function(Marionette, NavigationBarView, 
-	     SearchBarView, TilesView,
-	     Rows, serverResponse) {
-	/*
-	 * File name: Application.js
-	 * Date: February 2, 2015
-	 * Description: The Application.js files 
-	 */
+define([
+				"marionette", "views/NavBarView", 
+		    "views/SearchBarView", "views/TilesView",
+		    "collections/Rows", "serverResponse"
+], function(Marionette, NavBarView, SearchBarView, TilesView, Rows, serverResponse) {
+	'use strict';
+	
 	var MinnowApp = new Marionette.Application();
 
 	var AppLayoutView = Marionette.LayoutView.extend({
-	    template: "#appLayoutViewTemplate",
-	    className: "applicationLayout",
-
-	    regions: {
+    template: "#app-layout-view-template",
+    regions: {
 			navbar: ".navbar",
-			searchBar: ".searchBar",
-			tilesView : ".tilesView"
-	    }
+			searchBar: ".search-bar",
+			tilesView : ".tiles-view"
+    }
 	});
 
 	function getResponse() {
@@ -36,7 +30,7 @@ function(Marionette, NavigationBarView,
 
 		var tiles = getResponse();
 
-		appLayoutView.navbar.show(new NavigationBarView());
+		appLayoutView.navbar.show(new NavBarView());
 		appLayoutView.searchBar.show(new SearchBarView());
 		appLayoutView.tilesView.show(new TilesView({collection: tiles}));
 	});

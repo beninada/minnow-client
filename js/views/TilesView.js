@@ -1,8 +1,12 @@
-define(["marionette", "backbone.subviews", "templates"], 
-function(Marionette, Subviews, templates) {
-
+define([
+				"marionette",
+				"backbone.subviews",
+				"templates"
+], function(Marionette, Subviews, templates) {
+	'use strict';
+	
 	var TileItemView = Marionette.ItemView.extend({
-		template: templates.Tile,
+		template: templates.TileView,
 		className: "col-xs-4"
 	});
 
@@ -19,7 +23,7 @@ function(Marionette, Subviews, templates) {
 		},
 
 		subviewCreators: {
-			rowContainerSubview: function() {
+			RowContainerSubview: function() {
 				return new TilesCollectionView({collection: this.model.get("collection")});
 			}
 		}
@@ -31,7 +35,7 @@ function(Marionette, Subviews, templates) {
 	});
 
 	var TilesView = Marionette.ItemView.extend({
-		template: templates.TilesContainer,
+		template: templates.TilesView,
 		className: "container",
 
 		initialize: function() {
@@ -39,7 +43,7 @@ function(Marionette, Subviews, templates) {
 		},
 
 		subviewCreators: {
-			tilesSubview : function() {
+			TilesSubview : function() {
 				return new Rows({collection: this.options.collection});
 			}
 		}

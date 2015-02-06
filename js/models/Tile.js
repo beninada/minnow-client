@@ -1,5 +1,7 @@
-define(["backbone"], 
-function(Backbone) {
+define([
+        "backbone"
+], function(Backbone) {
+  'use strict';
 
 	var Tile = Backbone.Model.extend({
 		defaults: {

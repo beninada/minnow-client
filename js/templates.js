@@ -1,18 +1,18 @@
-define(["underscore",
-		"text!templates/navbar.html", 
-	    "text!templates/searchbar.html",
-	    "text!templates/tile.html",
-	    "text!templates/tilesview.html",
-	    "text!templates/row-container.html"], 
-	    function(_, NavBar, SearchBar, Tile, TilesContainer,
-	    	RowContainer) {
-	    "use strict";
+define([
+				"underscore",
+				"text!templates/navBarView.html", 
+		    "text!templates/searchBarView.html",
+		    "text!templates/tile.html",
+		    "text!templates/tilesView.html",
+		    "text!templates/rowContainer.html"
+], function(_, NavBarView, SearchBarView, TileView, TilesView, RowContainer) {
+			'use strict';
 
 	    var htmlTemplates = [
-	    	{"NavBar": NavBar}, 
-	    	{"SearchBar": SearchBar},
-	    	{"Tile": Tile},
-	    	{"TilesContainer": TilesContainer},
+	    	{"NavBarView": NavBarView}, 
+	    	{"SearchBarView": SearchBarView},
+	    	{"TileView": TileView},
+	    	{"TilesView": TilesView},
 	    	{"RowContainer": RowContainer}
 	    ];
 
