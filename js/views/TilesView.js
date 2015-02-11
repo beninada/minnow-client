@@ -7,30 +7,25 @@ define([
 	
 	var TileItemView = Marionette.ItemView.extend({
 		template: templates.TileView,
-		className: "col-xs-4"
-	});
+		className: "tile",
 
-	var TilesCollectionView = Marionette.CollectionView.extend({
-		childView: TileItemView
-	});
-
-	var Row = Marionette.ItemView.extend({
-		template: templates.RowContainer,
-		className: "row",
-
-		initialize: function() {
-			Subviews.add(this);
+		ui: {
+			$title: ".tile-title",
+			$minnowCount: ".tile-minnow-count",
+			$age: ".tile-subminnow-age"
 		},
 
-		subviewCreators: {
-			RowContainerSubview: function() {
-				return new TilesCollectionView({collection: this.model.get("collection")});
-			}
+		onRender : function() {
+			var index = (this._index < 10) ? this._index + 1 : 10;
+			this.$el.addClass("rank-" + index);
+			this.ui.$title.text(this.model.get("name"));
+			this.ui.$minnowCount.text(this.model.get("subscribers"));
+			this.ui.$age.text(this.model.get("age") + " years old");
 		}
 	});
 
-	var Rows = Marionette.CollectionView.extend({
-		childView: Row,
+	var TilesCollectionView = Marionette.CollectionView.extend({
+		childView: TileItemView,
 		className: "container-tiles"
 	});
 
@@ -44,7 +39,7 @@ define([
 
 		subviewCreators: {
 			TilesSubview : function() {
-				return new Rows({collection: this.options.collection});
+				return new TilesCollectionView({collection: this.options.collection});
 			}
 		}
 	});
