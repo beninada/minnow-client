@@ -2,7 +2,7 @@ define([
 				"underscore",
 				"text!templates/navBarView.html", 
 		    "text!templates/searchBarView.html",
-		    "text!templates/tile.html",
+		    "text!templates/tileView.html",
 		    "text!templates/tilesView.html",
 		    "text!templates/rowContainer.html"
 ], function(_, NavBarView, SearchBarView, TileView, TilesView, RowContainer) {
