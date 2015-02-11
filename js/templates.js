@@ -1,11 +1,11 @@
 define([
-				"underscore",
-				"text!templates/navBarView.html", 
+			"underscore",
+			"text!templates/navBarView.html", 
 		    "text!templates/searchBarView.html",
 		    "text!templates/tileView.html",
 		    "text!templates/tilesView.html",
-		    "text!templates/rowContainer.html"
-], function(_, NavBarView, SearchBarView, TileView, TilesView, RowContainer) {
+		    "text!templates/subscriptionView.html"
+], function(_, NavBarView, SearchBarView, TileView, TilesView, SubscriptionView) {
 			'use strict';
 
 	    var htmlTemplates = [
@@ -13,7 +13,7 @@ define([
 	    	{"SearchBarView": SearchBarView},
 	    	{"TileView": TileView},
 	    	{"TilesView": TilesView},
-	    	{"RowContainer": RowContainer}
+	    	{"SubscriptionView": SubscriptionView}
 	    ];
 
 	    return _.object(_.map(htmlTemplates, function(temp) {

@@ -1,8 +1,8 @@
 define([
 				"marionette", "views/NavBarView", 
-		    "views/SearchBarView", "views/TilesView",
-		    "collections/Rows", "serverResponse"
-], function(Marionette, NavBarView, SearchBarView, TilesView, Rows, serverResponse) {
+		    "views/SearchBarView", "views/TilesView", "views/SubscriptionView",
+		    "collections/Tiles", "serverResponse"
+], function(Marionette, NavBarView, SearchBarView, TilesView, SubscriptionView, Tiles, serverResponse) {
 	'use strict';
 	
 	var MinnowApp = new Marionette.Application();
@@ -10,15 +10,16 @@ define([
 	var AppLayoutView = Marionette.LayoutView.extend({
     template: "#app-layout-view-template",
     regions: {
-			navbar: ".navbar",
-			searchBar: ".search-bar",
-			tilesView : ".tiles-view"
+		navbar: ".navbar",
+		searchBar: ".search-bar",
+		tilesView : ".tiles-view",
+		subscription: ".subscription-view"
     }
 	});
 
 	function getResponse() {
-		var repsonse = serverResponse();
-		return new Rows(repsonse, {parse: true});
+		var response = serverResponse();
+		return new Tiles(response);
 	}
 
 	/*
@@ -33,6 +34,7 @@ define([
 		appLayoutView.navbar.show(new NavBarView());
 		appLayoutView.searchBar.show(new SearchBarView());
 		appLayoutView.tilesView.show(new TilesView({collection: tiles}));
+		appLayoutView.subscription.show(new SubscriptionView());
 	});
 
 	return MinnowApp;

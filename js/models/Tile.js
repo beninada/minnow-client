@@ -6,7 +6,9 @@ define([
 	var Tile = Backbone.Model.extend({
 		defaults: {
 			name: "",
-			subTiles: null
+			subTiles: null,
+			subscribers: 0,
+			age: 0
 		}	
 	});
 
