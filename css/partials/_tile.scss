@@ -1,6 +1,27 @@
 .tile {
-  padding: 5%;
+  position: relative;
+  padding: 15px;
   height: 200px;
   background-color: lighten($base-green, 25%);
   cursor: pointer;
+}
+
+.tile-title {
+  font-size: $font-size-scale-2;
+  font-weight: $font-weight-light;
+}
+
+.tile-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  float: right;
+  margin-bottom: 12px;
+  margin-right: 12px;
+  font-size: 12px;
+  font-weight: $font-weight-light;
+
+  > li:hover {
+    cursor: default;
+  }
 }
