@@ -1,3 +1,12 @@
+.btn {
+  &:active,
+  &:focus,
+  &:active:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 .btn-sign-up {
   height: 38px;
   width: 195px;
