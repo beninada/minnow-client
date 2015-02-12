@@ -7,7 +7,7 @@ define([
 		defaults: {
 			name: "",
 			subTiles: null,
-			subscribers: 0,
+			num_subscribers: 0,
 			age: 0
 		}	
 	});
