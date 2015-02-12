@@ -1,8 +1,8 @@
 define([
-				"marionette", "views/NavBarView", 
-		    "views/SearchBarView", "views/TilesView", "views/SubscriptionView",
-		    "collections/Tiles"
-], function(Marionette, NavBarView, SearchBarView, TilesView, SubscriptionView, Tiles) {
+	"marionette", "views/NavBarView", 
+    "views/SearchBarView", "views/TilesView", "views/SubscriptionView", "views/ResourceItemView", "views/ModeratorItemView",
+    "collections/Tiles"
+], function(Marionette, NavBarView, SearchBarView, TilesView, SubscriptionView, ResourceItemView, ModeratorItemView, Tiles) {
 	'use strict';
 	
 	var MinnowApp = new Marionette.Application();
@@ -13,7 +13,9 @@ define([
 	    regions: {
 			navbar: ".navbar",
 			searchBar: ".search-bar",
-			tilesView : ".tiles-view",
+			// tilesView : ".tiles-view",
+			resourceView : ".resource-item-view",
+			moderatorView : ".moderator-item-view",
 			subscription: ".subscription-view"
 	    }
 	});
@@ -30,11 +32,13 @@ define([
 		var appLayoutView = new AppLayoutView();
 		$('body').append(appLayoutView.render().el);
 
-		getJars();
+		// getJars();
 
 		appLayoutView.navbar.show(new NavBarView());
 		appLayoutView.searchBar.show(new SearchBarView());
-		appLayoutView.tilesView.show(new TilesView({collection: tiles}));
+		// appLayoutView.tilesView.show(new TilesView({collection: tiles}));
+		appLayoutView.resourceView.show(new ResourceItemView());
+		appLayoutView.moderatorView.show(new ModeratorItemView());
 		appLayoutView.subscription.show(new SubscriptionView());
 	});
 

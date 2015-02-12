@@ -1,12 +1,9 @@
 define([
 				"marionette",
 				"backbone.subviews",
-				"templates",
-				"collections/Tiles"
-], function(Marionette, Subviews, templates, Tiles) {
+				"templates"
+], function(Marionette, Subviews, templates) {
 	'use strict';
-
-
 	
 	var TileItemView = Marionette.ItemView.extend({
 		template: templates.TileView,
@@ -22,8 +19,8 @@ define([
 			var index = (this._index < 10) ? this._index + 1 : 10;
 			this.$el.addClass("rank-" + index);
 			this.ui.$title.text(this.model.get("name"));
-			this.ui.$minnowCount.text(this.model.get("num_subscribers"));
-			this.ui.$age.text(this.model.get("age") + " old");
+			this.ui.$minnowCount.text(this.model.get("subscribers"));
+			this.ui.$age.text(this.model.get("age") + " years old");
 		}
 	});
 
