@@ -1,5 +1,23 @@
+// Screen sizes
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+// Gutter widths
+$gutter-xs: 8px;
+$gutter-sm: 8px;
+$gutter-md: 10px;
+$gutter-lg: 14px;
+
+// Container widths
+$container-lg: 1065px;
+
+// Font Familes
 $font-family-sans-serif: "petala-pro", "Helvetica Neue", helvetica, arial, sans-serif;
 
+// Font sizes
+$font-size-label: 10px;
 $font-size-base: 14px;
 $font-size-scale-1: ceil(modular-scale($font-size-base, 1, $augmented-fourth));
 $font-size-scale-2: ceil(modular-scale($font-size-base, 2, $augmented-fourth));
@@ -7,8 +25,7 @@ $font-size-scale-3: ceil(modular-scale($font-size-base, 3, $augmented-fourth));
 $font-size-scale-4: ceil(modular-scale($font-size-base, 4, $augmented-fourth));
 $font-size-scale-5: ceil(modular-scale($font-size-base, 5, $augmented-fourth));
 
-$font-size-label: 10px;
-
+// Font weights
 $font-weight-thin: 100;
 $font-weight-light: 300;
 $font-weight-regular: 400;
@@ -16,3 +33,12 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 $font-weight-black: 900;
+
+// Colors
+$white: #fff;
+$black: #333;
+$base-blue: #0b486b;
+$base-green: #6fb18f;
+$light-gray: #bbb;
+$fb-blue: #3b5998;
+$twitter-blue: #55acee;

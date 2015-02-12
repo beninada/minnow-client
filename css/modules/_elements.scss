@@ -1,0 +1,12 @@
+body {
+  font-family: $font-family-sans-serif;
+}
+
+a {
+  color: $black;
+
+  &:hover {
+    color: inherit;
+    cursor: pointer;
+  }
+}
