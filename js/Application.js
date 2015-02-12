@@ -20,7 +20,7 @@ define([
 
 	function getJars() {
 		tiles.fetch();
-		setTimeout(getJars, 8000);
+		// setTimeout(getJars, 8000);
 	}
 
 	/*
