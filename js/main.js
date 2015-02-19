@@ -49,7 +49,10 @@ require.config({
 	}
 });
 
-require(["Application"], function (MinnowApp) {
+require(["domReady", "backbone", "Application"], 
+function (domReady, Backbone, MinnowApp) {
     // Execute App
-    MinnowApp.start();
+    domReady(function() {
+	    MinnowApp.start();
+    });
 });
