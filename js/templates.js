@@ -6,9 +6,17 @@ define([
 		    "text!templates/searchBarView.html",
 		    "text!templates/tileView.html",
 		    "text!templates/tilesView.html",
-		    "text!templates/subscriptionView.html"
+		    "text!templates/subscriptionView.html",
+		    "text!templates/createSubminnowView.html",
+		    "text!templates/morselsLayoutView.html",
+		    "text!templates/morselsView.html",
+		    "text!templates/morselsOptionView.html",
+		    "text!templates/createMorselView.html",
+		    "text!templates/morselItemView.html",
+		    "text!templates/jarSummaryView.html"
 ], function(_, AppLayoutView, HomePageView, NavBarView, SearchBarView, TileView, 
-	TilesView, SubscriptionView) {
+	TilesView, SubscriptionView, CreateSubminnowView, MorselsLayoutView, MorselsView, 
+	MorselsOptionView, CreateMorselView, MorselItemView, JarSummaryView, MorselsVideoPreview) {
 			'use strict';
 
 	    var htmlTemplates = [
@@ -18,7 +26,14 @@ define([
 	    	{"SearchBarView": SearchBarView},
 	    	{"TileView": TileView},
 	    	{"TilesView": TilesView},
-	    	{"SubscriptionView": SubscriptionView}
+	    	{"SubscriptionView": SubscriptionView},
+	    	{"CreateSubminnowView": CreateSubminnowView},
+	    	{"MorselsLayoutView": MorselsLayoutView},
+	    	{"MorselsView": MorselsView},
+	    	{"MorselsOptionView": MorselsOptionView},
+	    	{"CreateMorselView": CreateMorselView},
+	    	{"MorselItemView": MorselItemView},
+	    	{"JarSummaryView": JarSummaryView}
 	    ];
 
 	    return _.object(_.map(htmlTemplates, function(temp) {

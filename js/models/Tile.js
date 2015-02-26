@@ -5,11 +5,15 @@ define([
 
 	var Tile = Backbone.Model.extend({
 		defaults: {
+			type: "tile",
 			name: "",
-			subTiles: null,
 			num_subscribers: 0,
-			age: 0
-		}	
+			related: null,
+			creator: "",
+			about: ""
+		},
+
+		urlRoot: "http://localhost:8080/jars"
 	});
 
 	return Tile;

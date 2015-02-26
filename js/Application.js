@@ -1,8 +1,9 @@
 define([
 			"backbone", "marionette", "views/NavBarView", 
-		    "views/SearchBarView", "views/TilesView", "views/SubscriptionView",
-		    "collections/Tiles", "templates"
-], function(Backbone, Marionette, NavBarView, SearchBarView, TilesView, SubscriptionView, Tiles, templates) {
+		    "views/SearchBarView", "views/TilesView", "views/SubscriptionView", "views/CreateSubminnowView",
+		    "views/MorselsView", "collections/Tiles", "collections/Morsels", "templates"
+], function(Backbone, Marionette, NavBarView, SearchBarView, TilesView, SubscriptionView, 
+	CreateSubminnowView, MorselsView, Tiles, Morsels, templates) {
 	"use strict";
 	
 	var MinnowApp = new Marionette.Application();
@@ -33,20 +34,42 @@ define([
 	    	var that = this;
 
 	    	var routeHandler = {
-				"" : "onHomeRoute",
-				"home" : "onHomeRoute"
+				"": "onHomeRoute",
+				"home": "onHomeRoute",
+				":jar/morsels": "onMorselsRoute"
 			};
 
 			var routerController = {
 				onHomeRoute: function() {
-					var tiles = new Tiles();
-					that.onHomeNavigated(tiles);
-					this.getJars(tiles);
+					clearTimeout(this.morselsTimeout);
+					that.tiles = new Tiles();
+					that.onHomeNavigated(that.tiles);
+					this.getJars(that.tiles);
 				},
 
-				getJars : function(pTiles) {
+				onMorselsRoute: function(jarName) {
+					var jarModel = that.tiles.findWhere({name: jarName});
+
+					clearTimeout(this.jarsTimeout);
+					that.morsels = new Morsels();
+					that.morsels.url = "http://localhost:8080/jars/" + encodeURIComponent(jarModel.get("name")) + "/morsels";
+					that.onMorselsNavigated(that.morsels, jarModel.get("name"));
+					this.getMorsels(that.morsels, jarModel);
+				},
+
+				getJars: function(pTiles) {
 					pTiles.fetch();
-					setTimeout(_.bind(this.getJars, this), 8000, pTiles);
+					//this.jarsTimeout = setTimeout(_.bind(this.getJars, this), 8000, pTiles);
+				},
+
+				getMorsels: function(pMorsels, pJarModel) {
+					pMorsels.fetch({
+						success: function() {
+							pMorsels.unshift(pJarModel);
+						}
+					});
+
+					//this.morselsTimeout = setTimeout(_.bind(this.getMorsels, this), 8000, pMorsels, pJarModel);
 				}
 			};
 
@@ -66,6 +89,17 @@ define([
 			homeLayoutView.searchBar.show(new SearchBarView());
 			homeLayoutView.tilesView.show(new TilesView({collection: pTiles}));
 			homeLayoutView.subscription.show(new SubscriptionView());
+			homeLayoutView.createSubminnow.show(new CreateSubminnowView({tiles: pTiles}));
+		},
+
+		onMorselsNavigated: function(pMorsels, pJarName) {
+			var morselsLayoutView = new MorselsLayoutView();
+			this.appContent.show(morselsLayoutView);
+
+			morselsLayoutView.navbar.show(new NavBarView());
+			morselsLayoutView.searchBar.show(new SearchBarView());
+			morselsLayoutView.morselsView.show(new MorselsView({morsels: pMorsels, jar: pJarName}));
+			morselsLayoutView.createSubminnow.show(new CreateSubminnowView());
 		}
 	});
 
@@ -77,8 +111,21 @@ define([
 			navbar: ".navbar",
 			searchBar: ".search-bar",
 			tilesView : ".tiles-view",
-			subscription: ".subscription-view"
+			subscription: ".subscription-view",
+			createSubminnow: ".create-subminnow-view"
 	    }
+	});
+
+	var MorselsLayoutView = Marionette.LayoutView.extend({
+		id: "morsels-layout-view",
+		template: templates.MorselsLayoutView,
+
+	    regions: {
+			navbar: ".navbar",
+			searchBar: ".search-bar",
+			morselsView: ".morsels-view",
+			createSubminnow: ".create-subminnow-view"
+		}
 	});
 
 	/*
@@ -91,4 +138,3 @@ define([
 
 	return MinnowApp;
 });
-

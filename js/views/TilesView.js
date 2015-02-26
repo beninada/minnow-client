@@ -5,14 +5,13 @@ define([
 				"collections/Tiles"
 ], function(Marionette, Subviews, templates, Tiles) {
 	'use strict';
-
-
 	
 	var TileItemView = Marionette.ItemView.extend({
 		template: templates.TileView,
-		className: "tile",
+		tagName: "a",
 
 		ui: {
+			$tile: ".tile",
 			$title: ".tile-title",
 			$minnowCount: ".tile-minnow-count",
 			$age: ".tile-subminnow-age"
@@ -20,8 +19,11 @@ define([
 
 		onRender : function() {
 			var index = (this._index < 10) ? this._index + 1 : 10;
-			this.$el.addClass("rank-" + index);
-			this.ui.$title.text(this.model.get("name"));
+			var name = this.model.get("name");
+
+			this.$el.attr("href", "#" + name + "/morsels");
+			this.ui.$tile.addClass("rank-" + index);
+			this.ui.$title.text(name);
 			this.ui.$minnowCount.text(this.model.get("num_subscribers"));
 			this.ui.$age.text(this.model.get("age") + " old");
 		}
