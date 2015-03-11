@@ -6,7 +6,8 @@ define([
 	var Tile = Backbone.Model.extend({
 		defaults: {
 			type: "tile",
-			name: "",
+			jar_name: "",
+			cat_name: "",
 			num_subscribers: 0,
 			related: null,
 			creator: "",

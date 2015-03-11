@@ -1,9 +1,10 @@
 define([
 			"backbone", "marionette", "views/NavBarView", 
-		    "views/SearchBarView", "views/TilesView", "views/SubscriptionView", "views/CreateSubminnowView",
-		    "views/MorselsView", "collections/Tiles", "collections/Morsels", "templates"
-], function(Backbone, Marionette, NavBarView, SearchBarView, TilesView, SubscriptionView, 
-	CreateSubminnowView, MorselsView, Tiles, Morsels, templates) {
+		    "views/SearchBarView", "views/CategoriesView", "views/TilesView","views/SubscriptionView", 
+		    "views/CreateSubminnowView", "views/MorselsView", "collections/Categories", "collections/Morsels", 
+		    "templates", "resources"
+], function(Backbone, Marionette, NavBarView, SearchBarView, CategoriesView, TilesView, SubscriptionView, 
+	CreateSubminnowView, MorselsView, Categories, Morsels, templates, resources) {
 	"use strict";
 	
 	var MinnowApp = new Marionette.Application();
@@ -11,6 +12,10 @@ define([
 	MinnowApp.addRegions({
 		appRegion: "#app-region"
 	});
+
+	function getResources() {
+		return resources.getResources();
+	}
 
 	var AppLayoutView = Marionette.LayoutView.extend({
 	    template: templates.AppLayoutView,
@@ -36,30 +41,37 @@ define([
 	    	var routeHandler = {
 				"": "onHomeRoute",
 				"home": "onHomeRoute",
-				":jar/morsels": "onMorselsRoute"
+				":catName/subjects": "onSeeAllSubjectsRoute",
+				":catName/:jar/morsels": "onMorselsRoute"
 			};
 
 			var routerController = {
 				onHomeRoute: function() {
 					clearTimeout(this.morselsTimeout);
-					that.tiles = new Tiles();
-					that.onHomeNavigated(that.tiles);
-					this.getJars(that.tiles);
+					that.categories = new Categories();
+					that.onHomeNavigated(that.categories);
+					this.getCategories(that.categories);
 				},
 
-				onMorselsRoute: function(jarName) {
-					var jarModel = that.tiles.findWhere({name: jarName});
+				onSeeAllSubjectsRoute: function(categoryName) {
+					var category = that.categories.findWhere({cat_name: categoryName});
+					that.onSeeAllSubjectsNavigated(category.get("jars"));
+				},
 
-					clearTimeout(this.jarsTimeout);
+				onMorselsRoute: function(catName, jarName) {
+					var catModel = that.categories.findWhere({cat_name: catName});
+					var jarModel = catModel.get("jars").findWhere({jar_name: jarName});
+
+					clearTimeout(this.categoriesTimeout);
 					that.morsels = new Morsels();
-					that.morsels.url = "http://localhost:8080/jars/" + encodeURIComponent(jarModel.get("name")) + "/morsels";
-					that.onMorselsNavigated(that.morsels, jarModel.get("name"));
+					that.morsels.url = "http://localhost:8080/jars/" + encodeURIComponent(jarModel.get("jar_name")) + "/morsels";
+					that.onMorselsNavigated(that.morsels, jarName);
 					this.getMorsels(that.morsels, jarModel);
 				},
 
-				getJars: function(pTiles) {
-					pTiles.fetch();
-					//this.jarsTimeout = setTimeout(_.bind(this.getJars, this), 8000, pTiles);
+				getCategories: function(pCategories) {
+					pCategories.fetch();
+					this.categoriesTimeout = setTimeout(_.bind(this.getCategories, this), 8000, pCategories);
 				},
 
 				getMorsels: function(pMorsels, pJarModel) {
@@ -69,7 +81,7 @@ define([
 						}
 					});
 
-					//this.morselsTimeout = setTimeout(_.bind(this.getMorsels, this), 8000, pMorsels, pJarModel);
+					this.morselsTimeout = setTimeout(_.bind(this.getMorsels, this), 8000, pMorsels, pJarModel);
 				}
 			};
 
@@ -81,15 +93,26 @@ define([
 			var router = new AppRouter();
 	    },
 
-		onHomeNavigated: function(pTiles) {
+		onHomeNavigated: function(pCategories) {
 			var homeLayoutView = new HomeLayoutView();
 			this.appContent.show(homeLayoutView);
 
 			homeLayoutView.navbar.show(new NavBarView());
 			homeLayoutView.searchBar.show(new SearchBarView());
-			homeLayoutView.tilesView.show(new TilesView({collection: pTiles}));
+			homeLayoutView.categories.show(new CategoriesView({categories: pCategories}));
 			homeLayoutView.subscription.show(new SubscriptionView());
-			homeLayoutView.createSubminnow.show(new CreateSubminnowView({tiles: pTiles}));
+			// homeLayoutView.createSubminnow.show(new CreateSubminnowView());
+		},
+
+		onSeeAllSubjectsNavigated: function(pJars) {
+			var homeLayoutView = new HomeLayoutView();
+			this.appContent.show(homeLayoutView);
+
+			homeLayoutView.navbar.show(new NavBarView());
+			homeLayoutView.searchBar.show(new SearchBarView());
+			homeLayoutView.categories.show(new TilesView({collection: pJars}));
+			homeLayoutView.subscription.show(new SubscriptionView());
+			// homeLayoutView.createSubminnow.show(new CreateSubminnowView());
 		},
 
 		onMorselsNavigated: function(pMorsels, pJarName) {
@@ -110,7 +133,7 @@ define([
 	    regions: {
 			navbar: ".navbar",
 			searchBar: ".search-bar",
-			tilesView : ".tiles-view",
+			categories : ".categories-view",
 			subscription: ".subscription-view",
 			createSubminnow: ".create-subminnow-view"
 	    }

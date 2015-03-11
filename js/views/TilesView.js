@@ -19,11 +19,12 @@ define([
 
 		onRender : function() {
 			var index = (this._index < 10) ? this._index + 1 : 10;
-			var name = this.model.get("name");
+			var jarName = this.model.get("jar_name");
+			var catName = this.model.get("cat_name");
 
-			this.$el.attr("href", "#" + name + "/morsels");
+			this.$el.attr("href", "#" + catName + "/" + jarName + "/morsels");
 			this.ui.$tile.addClass("rank-" + index);
-			this.ui.$title.text(name);
+			this.ui.$title.text(jarName);
 			this.ui.$minnowCount.text(this.model.get("num_subscribers"));
 			this.ui.$age.text(this.model.get("age") + " old");
 		}
@@ -44,7 +45,9 @@ define([
 
 		subviewCreators: {
 			TilesSubview : function() {
-				return new TilesCollectionView({collection: this.options.collection});
+				var tilesJSON = this.options.collection.toJSON();
+				var tiles = new Tiles(tilesJSON.slice(0, this.options.tilesFilter));
+				return new TilesCollectionView({collection: tiles});
 			}
 		}
 	});

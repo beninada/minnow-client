@@ -70,7 +70,7 @@
   background-color: #e1e1e1;
   width: 50px;
   height: 50px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   padding: 15px 19px;
 
   .btn-icon {
@@ -80,10 +80,6 @@
     font-weight: 400;
     text-align: left;
     transform: scaleX(1.0027);
-  }
-
-  .ion-add {
-    content: "\f218";
   }
 
   &:hover {

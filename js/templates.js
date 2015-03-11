@@ -13,10 +13,13 @@ define([
 		    "text!templates/morselsOptionView.html",
 		    "text!templates/createMorselView.html",
 		    "text!templates/morselItemView.html",
-		    "text!templates/jarSummaryView.html"
+		    "text!templates/jarSummaryView.html",
+		    "text!templates/categoryItemView.html",
+		    "text!templates/categoriesView.html"
 ], function(_, AppLayoutView, HomePageView, NavBarView, SearchBarView, TileView, 
 	TilesView, SubscriptionView, CreateSubminnowView, MorselsLayoutView, MorselsView, 
-	MorselsOptionView, CreateMorselView, MorselItemView, JarSummaryView, MorselsVideoPreview) {
+	MorselsOptionView, CreateMorselView, MorselItemView, JarSummaryView, CategoryView, 
+	CategoriesView) {
 			'use strict';
 
 	    var htmlTemplates = [
@@ -33,7 +36,9 @@ define([
 	    	{"MorselsOptionView": MorselsOptionView},
 	    	{"CreateMorselView": CreateMorselView},
 	    	{"MorselItemView": MorselItemView},
-	    	{"JarSummaryView": JarSummaryView}
+	    	{"JarSummaryView": JarSummaryView},
+	    	{"CategoriesView": CategoriesView},
+	    	{"CategoryView": CategoryView}
 	    ];
 
 	    return _.object(_.map(htmlTemplates, function(temp) {
