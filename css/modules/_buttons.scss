@@ -105,3 +105,26 @@
   top: 60px;
   padding: 13px 17px;
 }
+
+.btn-add-photo,
+.submit-comment {
+  margin-top: 8px;
+  background: $white;
+  font-size: 12px;
+}
+
+.btn-add-photo {
+  &:hover {
+    background-color: $lighter-gray;
+    @include transition(all 200ms ease-out);
+  }
+}
+
+.submit-comment {
+  float: right;
+
+  &:hover {
+    background-color: lighten($base-green, 30%);
+    @include transition(all 200ms ease-out);
+  }
+}

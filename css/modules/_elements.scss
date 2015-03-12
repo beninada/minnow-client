@@ -15,3 +15,16 @@ a {
     outline-offset: 0;
   }
 }
+
+textarea {
+  box-shadow: none;
+  border-radius: 2px;
+}
+
+.form-control {
+  &:focus {
+    border-color: inherit;
+    outline: 0;
+    box-shadow: none;
+  }
+}
