@@ -24,6 +24,7 @@ function(Marionette, Subviews, templates, Comments) {
 
 	var CommentsWithRepliesItemView = Marionette.ItemView.extend({
 		template: templates.CommentsWithRepliesItemView,
+		className: "comment-box",
 
 		initialize: function() {
 			Subviews.add(this);

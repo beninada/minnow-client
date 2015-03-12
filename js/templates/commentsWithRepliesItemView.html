@@ -1,13 +1,18 @@
-<div class="comment-header-container">
-	<div class="toggle-comments block-div"></div>
-	<div class="commentor block-div"></div>
-	<div class="age block-div"></div>
-	<div class="comment-likes block-div"></div>
-	<div class="reply-button block-div"></div>
+<div class="row">
+  <div class="comment-header-container">
+  	<div class="toggle-comments block-div"><span class="ion-chevron-down"></span></div>
+  	<div class="commentor block-div"></div>
+  	<div class="age block-div"></div>
+    <div class="block-div"><span class="ion-heart"></div>
+  	<!-- <div class="comment-likes block-div"></div> -->
+  	<div class="reply-button block-div"><span class="ion-reply"></span></div>
+  </div>
+  <div class="comment-container">
+  	<span class="user-comment"></span>
+  </div>
+  <textarea class="hide" placeholder="Write a comment..." rows="4"></textarea>
+  <button class="hide btn btn-add-photo">Add a Photo</button>
+  <button class="hide btn submit-comment">Submit</button>
 </div>
-<div class="comment-container">
-	<span class="user-comment"></span>
-</div>
-<textarea placeholder="WRITE A COMMENT..." rows="4"></textarea>
-<button data-toggle="modal" data-target="#modal-comments-view" class="btn btn-block btn-sign-up btn-sign-up-fb submit-comment">Submit</button>
+
 <div data-subview="commentsSubview"></div>
