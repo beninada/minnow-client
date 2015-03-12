@@ -138,9 +138,6 @@ define([
 			var commentsLayoutView = new CommentsLayoutView();
 			var comments = new Comments(getComments());
 			this.appContent.show(commentsLayoutView);
-
-			commentsLayoutView.navbar.show(new NavBarView());
-			commentsLayoutView.searchBar.show(new SearchBarView());
 			commentsLayoutView.comments.show(new CommentsView({collection: comments}));
 		}
 	});
@@ -176,8 +173,6 @@ define([
 		template: templates.CommentsLayoutView,
 
 		regions: {
-			navbar: ".navbar",
-			searchBar: ".search-bar",
 			comments: ".comments-section"
 		}
 	});
