@@ -73,7 +73,9 @@ define([
 
 				onCommentsRoute: function(uuid) {
 					that.comments = new Comments();
-					that.onCommentsPageNavigated();
+					that.comments.url = "http://localhost:8080/morsels/" + uuid + "/comments";
+					that.onCommentsPageNavigated(that.comments);
+					this.getComments(that.comments);
 				},
 
 				getCategories: function(pCategories) {
@@ -89,6 +91,11 @@ define([
 					});
 
 					// this.morselsTimeout = setTimeout(_.bind(this.getMorsels, this), 8000, pMorsels, pJarModel);
+				},
+
+				getComments: function(pComments) {
+					pComments.fetch();
+					this.commentsTimeout = setTimeout(_.bind(this.getComments, this), 8000, pComments);
 				}
 			};
 
