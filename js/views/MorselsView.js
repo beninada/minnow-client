@@ -1,7 +1,7 @@
 define([
-	"marionette", "templates", "backbone.courier", "views/CommentsView", "models/Morsel", "collections/Comments", "commentResources"
+	"marionette", "templates", "models/Morsel"
 ],
-function(Marionette, templates, Courier, CommentsView, Morsel, Comments, commentResources) {
+function(Marionette, templates, Morsel) {
 
 	var JarSummaryItemView = Marionette.ItemView.extend({
 		template: templates.JarSummaryView,
@@ -27,24 +27,24 @@ function(Marionette, templates, Courier, CommentsView, Morsel, Comments, comment
 
 		initialize: function() {
 			this.addPropagationHandler();
-			Courier.add(this);
 		},
 
 		addPropagationHandler: function() {
 			this.$el.click(function(e) {
-				return $(e.target).hasClass("morsel-item-view");
+				return !$(e.target).hasClass("ion-chatbubble");
 			});
+		},
+
+		events: {
+			"click .morsel-comments" : "onMorselCommentClicked"
 		},
 
 		ui: {
 			$morsel: ".tile",
 			$title: ".morsel-title",
 			$views: ".morsel-views",
-			$age: ".morsel-age"
-		},
-
-		events: {
-			"click .comment-bubble" : "bubbleUpMessage"
+			$age: ".morsel-age",
+			$comment: ".morsel-comments"
 		},
 
 		onRender: function() {
@@ -57,23 +57,16 @@ function(Marionette, templates, Courier, CommentsView, Morsel, Comments, comment
 			this.ui.$title.text(this.model.get("title"));
 			this.ui.$views.text("0");
 			this.ui.$age.text(this.model.get("age"));
+			this.ui.$comment.attr("href", "#morsels/" + this.model.get("id") + "/comments");
 		},
 
-		bubbleUpMessage: function() {
-			this.spawn("bubbleUpMessage", this.model.get("id"));
+		onMorselCommentClicked: function() {
+			this.ui.$comment.trigger('click');
 		}
 	});
 
 	var MorselsCollectionView = Marionette.CollectionView.extend({
 		className: "morsels-collection-view",
-
-		initialize: function() {
-			Courier.add(this);
-		},
-
-		passMessages: {
-			"bubbleUpMessage": "toggleComments"
-		},
 
 		getChildView: function(item) {
 			var type = item.get("type");
@@ -140,31 +133,18 @@ function(Marionette, templates, Courier, CommentsView, Morsel, Comments, comment
 
 		initialize: function() {
 			this.morsels = this.options.morsels;
-			Courier.add(this);
 		},
 
 		regions: {
 			morselsOptionsView: ".morsels-options",
 			morselsCollectionView: ".morsels-collection",
-			createMorselView: ".create-morsel",
-			comments: ".comments-view"
-		},
-
-		onMessages: {
-			"toggleComments": "onToggleComments"
+			createMorselView: ".create-morsel"
 		},
 
 		onRender: function() {
 			this.morselsOptionsView.show(new MorselsOptionsView());
 			this.morselsCollectionView.show(new MorselsCollectionView({collection: this.morsels}));
 			this.createMorselView.show(new CreateMorselView({jar: this.options.jar}));
-			this.comments.show(new CommentsView());
-		},
-
-		onToggleComments: function(data, source) {
-			var commentData = commentResources.getComments();
-			this.comments = new Comments(commentData);
-			this.$el.find("#modal-comments-view").modal("show");
 		}
 	});
 

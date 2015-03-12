@@ -1,10 +1,10 @@
 define([
 			"backbone", "marionette", "views/NavBarView", 
 		    "views/SearchBarView", "views/CategoriesView", "views/TilesView", "views/ScrollNotificationView", 
-		    "views/SubscriptionView", "views/CreateSubminnowView", "views/MorselsView", "collections/Categories", 
-		    "collections/Morsels", "templates", "commentResources"
+		    "views/SubscriptionView", "views/CreateSubminnowView", "views/MorselsView", "views/CommentsView", 
+		    "collections/Categories", "collections/Morsels", "collections/Comments", "templates", "commentResources"
 ], function(Backbone, Marionette, NavBarView, SearchBarView, CategoriesView, TilesView, ScrollNotificationView, 
-	SubscriptionView, CreateSubminnowView, MorselsView, Categories, Morsels, templates, 
+	SubscriptionView, CreateSubminnowView, MorselsView, CommentsView, Categories, Morsels, Comments, templates, 
 	commentResources) {
 	"use strict";
 	
@@ -43,7 +43,8 @@ define([
 				"": "onHomeRoute",
 				"home": "onHomeRoute",
 				":catName/subjects": "onSeeAllSubjectsRoute",
-				":catName/:jar/morsels": "onMorselsRoute"
+				":catName/:jar/morsels": "onMorselsRoute",
+				"morsels/:uuid/comments": "onCommentsRoute"
 			};
 
 			var routerController = {
@@ -68,6 +69,11 @@ define([
 					that.morsels.url = "http://localhost:8080/jars/" + encodeURIComponent(jarModel.get("jar_name")) + "/morsels";
 					that.onMorselsNavigated(that.morsels, jarName);
 					this.getMorsels(that.morsels, jarModel);
+				},
+
+				onCommentsRoute: function(uuid) {
+					that.comments = new Comments();
+					that.onCommentsPageNavigated();
 				},
 
 				getCategories: function(pCategories) {
@@ -126,6 +132,16 @@ define([
 			morselsLayoutView.searchBar.show(new SearchBarView());
 			morselsLayoutView.morselsView.show(new MorselsView({morsels: pMorsels, jar: pJarName}));
 			morselsLayoutView.createSubminnow.show(new CreateSubminnowView());
+		},
+
+		onCommentsPageNavigated: function() {
+			var commentsLayoutView = new CommentsLayoutView();
+			var comments = new Comments(getComments());
+			this.appContent.show(commentsLayoutView);
+
+			commentsLayoutView.navbar.show(new NavBarView());
+			commentsLayoutView.searchBar.show(new SearchBarView());
+			commentsLayoutView.comments.show(new CommentsView({collection: comments}));
 		}
 	});
 
@@ -152,6 +168,17 @@ define([
 			searchBar: ".search-bar",
 			morselsView: ".morsels-view",
 			createSubminnow: ".create-subminnow-view"
+		}
+	});
+
+	var CommentsLayoutView = Marionette.LayoutView.extend({
+		id: "comments-layout-view",
+		template: templates.CommentsLayoutView,
+
+		regions: {
+			navbar: ".navbar",
+			searchBar: ".search-bar",
+			comments: ".comments-section"
 		}
 	});
 
