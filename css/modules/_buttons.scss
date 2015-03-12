@@ -34,8 +34,7 @@
   }
 }
 
-.btn-sign-up-twitter,
-.btn-explore-related {
+.btn-sign-up-twitter {
   background-color: $twitter-blue;
   @include transition(background-color 200ms ease-out);
 
@@ -45,6 +44,14 @@
     background-color: darken($twitter-blue, 10%);
     @include transition(background-color 200ms ease-out);
   }
+}
+
+.btn-explore-related {
+  width: 277px;
+  margin-top: 10px;
+  background-color: $lighter-gray;
+  border-radius: 3px;
+  color: $black;
 }
 
 .btn-close-modal {

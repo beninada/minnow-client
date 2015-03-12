@@ -5,8 +5,13 @@ body {
 a {
   color: $black;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:hover,
+  &:focus {
     color: inherit;
     cursor: pointer;
+    outline: none;
+    outline-offset: 0;
   }
 }
