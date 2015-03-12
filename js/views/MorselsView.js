@@ -1,7 +1,7 @@
 define([
-	"marionette", "templates", "models/Morsel"
+	"marionette", "templates", "backbone.courier", "views/CommentsView", "models/Morsel", "collections/Comments", "commentResources"
 ],
-function(Marionette, templates, Morsel) {
+function(Marionette, templates, Courier, CommentsView, Morsel, Comments, commentResources) {
 
 	var JarSummaryItemView = Marionette.ItemView.extend({
 		template: templates.JarSummaryView,
@@ -15,7 +15,7 @@ function(Marionette, templates, Morsel) {
 		},
 
 		onRender: function() {
-			this.ui.$title.text(this.model.get("name"));
+			this.ui.$title.text(this.model.get("jar_name"));
 			this.ui.$moderator.text(this.model.get("creator"));
 			this.ui.$about.text(this.model.get("about"));
 		}
@@ -25,11 +25,26 @@ function(Marionette, templates, Morsel) {
 		template: templates.MorselItemView,
 		tagName: "a",
 
+		initialize: function() {
+			this.addPropagationHandler();
+			Courier.add(this);
+		},
+
+		addPropagationHandler: function() {
+			this.$el.click(function(e) {
+				return $(e.target).hasClass("morsel-item-view");
+			});
+		},
+
 		ui: {
 			$morsel: ".morsel-item-view",
 			$title: ".morsel-title",
 			$views: ".morsel-views",
 			$age: ".morsel-age"
+		},
+
+		events: {
+			"click .comment-bubble" : "bubbleUpMessage"
 		},
 
 		onRender: function() {
@@ -42,11 +57,23 @@ function(Marionette, templates, Morsel) {
 			this.ui.$title.text(this.model.get("title"));
 			this.ui.$views.text("0");
 			this.ui.$age.text(this.model.get("age"));
+		},
+
+		bubbleUpMessage: function() {
+			this.spawn("bubbleUpMessage", this.model.get("id"));
 		}
 	});
 
 	var MorselsCollectionView = Marionette.CollectionView.extend({
 		className: "morsels-collection-view",
+
+		initialize: function() {
+			Courier.add(this);
+		},
+
+		passMessages: {
+			"bubbleUpMessage": "toggleComments"
+		},
 
 		getChildView: function(item) {
 			var type = item.get("type");
@@ -113,18 +140,31 @@ function(Marionette, templates, Morsel) {
 
 		initialize: function() {
 			this.morsels = this.options.morsels;
+			Courier.add(this);
 		},
 
 		regions: {
 			morselsOptionsView: ".morsels-options",
 			morselsCollectionView: ".morsels-collection",
-			createMorselView: ".create-morsel"
+			createMorselView: ".create-morsel",
+			comments: ".comments-view"
+		},
+
+		onMessages: {
+			"toggleComments": "onToggleComments"
 		},
 
 		onRender: function() {
 			this.morselsOptionsView.show(new MorselsOptionsView());
 			this.morselsCollectionView.show(new MorselsCollectionView({collection: this.morsels}));
 			this.createMorselView.show(new CreateMorselView({jar: this.options.jar}));
+			this.comments.show(new CommentsView());
+		},
+
+		onToggleComments: function(data, source) {
+			var commentData = commentResources.getComments();
+			this.comments = new Comments(commentData);
+			this.$el.find("#modal-comments-view").modal("show");
 		}
 	});
 

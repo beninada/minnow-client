@@ -16,11 +16,12 @@ define([
 		    "text!templates/jarSummaryView.html",
 		    "text!templates/categoryItemView.html",
 		    "text!templates/categoriesView.html",
-		    "text!templates/scrollNotificationView.html"
+		    "text!templates/scrollNotificationView.html",
+		    "text!templates/commentsView.html"
 ], function(_, AppLayoutView, HomePageView, NavBarView, SearchBarView, TileView, 
 	TilesView, SubscriptionView, CreateSubminnowView, MorselsLayoutView, MorselsView, 
 	MorselsOptionView, CreateMorselView, MorselItemView, JarSummaryView, CategoryView, 
-	CategoriesView, ScrollNotificationView) {
+	CategoriesView, ScrollNotificationView, CommentsView) {
 			'use strict';
 
 	    var htmlTemplates = [
@@ -40,7 +41,8 @@ define([
 	    	{"JarSummaryView": JarSummaryView},
 	    	{"CategoriesView": CategoriesView},
 	    	{"CategoryView": CategoryView},
-	    	{"ScrollNotificationView": ScrollNotificationView}
+	    	{"ScrollNotificationView": ScrollNotificationView},
+	    	{"CommentsView": CommentsView}
 	    ];
 
 	    return _.object(_.map(htmlTemplates, function(temp) {
