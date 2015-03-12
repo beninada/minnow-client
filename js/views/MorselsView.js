@@ -109,7 +109,7 @@ function(Marionette, templates, Morsel) {
 
 	var MorselsView = Marionette.LayoutView.extend({
 		template: templates.MorselsView,
-		className: "container",
+		className: "morsels-container",
 
 		initialize: function() {
 			this.morsels = this.options.morsels;

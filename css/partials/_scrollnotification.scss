@@ -1,0 +1,17 @@
+.scroll-notification-item-view {
+	width: 100%;
+	height: 140px;
+
+	.notification-text {
+		width: 140px;
+		margin: 15px auto 0;
+		text-align: center;
+	}
+
+	.notification-arrow {
+		margin: 0 auto;
+		width: 22px;
+		height: 50px;
+		font-size: $font-size-scale-3;
+	}
+}

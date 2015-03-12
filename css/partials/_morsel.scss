@@ -80,6 +80,16 @@
 	margin-bottom: 10px;
 }
 
+.jar-about-container {
+	min-height: 206px;
+}
+
+.morsels-container {
+	width: 90%;
+	min-height: 500px;
+	margin: 0 50px;
+}
+
 .morsel-footer {
 	width: 91%;
 	position: absolute;
@@ -92,8 +102,4 @@
 
 .morsel-actions {
 	float: right;
-}
-
-.jar-about-container {
-	min-height: 206px; //186px;;;;;
 }

@@ -1,10 +1,10 @@
 define([
 			"backbone", "marionette", "views/NavBarView", 
-		    "views/SearchBarView", "views/CategoriesView", "views/TilesView","views/SubscriptionView", 
-		    "views/CreateSubminnowView", "views/MorselsView", "collections/Categories", "collections/Morsels", 
-		    "templates", "resources"
-], function(Backbone, Marionette, NavBarView, SearchBarView, CategoriesView, TilesView, SubscriptionView, 
-	CreateSubminnowView, MorselsView, Categories, Morsels, templates, resources) {
+		    "views/SearchBarView", "views/CategoriesView", "views/TilesView", "views/ScrollNotificationView", 
+		    "views/SubscriptionView", "views/CreateSubminnowView", "views/MorselsView", "collections/Categories", 
+		    "collections/Morsels", "templates"
+], function(Backbone, Marionette, NavBarView, SearchBarView, CategoriesView, TilesView, ScrollNotificationView, 
+	SubscriptionView, CreateSubminnowView, MorselsView, Categories, Morsels, templates) {
 	"use strict";
 	
 	var MinnowApp = new Marionette.Application();
@@ -12,10 +12,6 @@ define([
 	MinnowApp.addRegions({
 		appRegion: "#app-region"
 	});
-
-	function getResources() {
-		return resources.getResources();
-	}
 
 	var AppLayoutView = Marionette.LayoutView.extend({
 	    template: templates.AppLayoutView,
@@ -100,6 +96,7 @@ define([
 			homeLayoutView.navbar.show(new NavBarView());
 			homeLayoutView.searchBar.show(new SearchBarView());
 			homeLayoutView.categories.show(new CategoriesView({categories: pCategories}));
+			homeLayoutView.scrollNotification.show(new ScrollNotificationView());
 			homeLayoutView.subscription.show(new SubscriptionView());
 			// homeLayoutView.createSubminnow.show(new CreateSubminnowView());
 		},
@@ -111,6 +108,7 @@ define([
 			homeLayoutView.navbar.show(new NavBarView());
 			homeLayoutView.searchBar.show(new SearchBarView());
 			homeLayoutView.categories.show(new TilesView({collection: pJars}));
+			homeLayoutView.scrollNotification.show(new ScrollNotificationView());
 			homeLayoutView.subscription.show(new SubscriptionView());
 			// homeLayoutView.createSubminnow.show(new CreateSubminnowView());
 		},
@@ -135,7 +133,8 @@ define([
 			searchBar: ".search-bar",
 			categories : ".categories-view",
 			subscription: ".subscription-view",
-			createSubminnow: ".create-subminnow-view"
+			createSubminnow: ".create-subminnow-view",
+			scrollNotification: ".scroll-notification-view"
 	    }
 	});
 
