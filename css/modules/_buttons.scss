@@ -34,8 +34,7 @@
   }
 }
 
-.btn-sign-up-twitter,
-.btn-explore-related {
+.btn-sign-up-twitter {
   background-color: $twitter-blue;
   @include transition(background-color 200ms ease-out);
 
@@ -45,6 +44,14 @@
     background-color: darken($twitter-blue, 10%);
     @include transition(background-color 200ms ease-out);
   }
+}
+
+.btn-explore-related {
+  width: 277px;
+  margin-top: 10px;
+  background-color: $lighter-gray;
+  border-radius: 3px;
+  color: $black;
 }
 
 .btn-close-modal {
@@ -71,10 +78,10 @@
   left: -67px;
   border-radius: 50%;
   background-color: #e1e1e1;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   margin-bottom: 14px;
-  padding: 15px 19px;
+  padding: 13px 18px;
 
   .btn-icon {
     font-family: "Ionicons";
@@ -96,4 +103,5 @@
 
 .btn-subscribe {
   top: 60px;
+  padding: 13px 17px;
 }

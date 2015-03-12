@@ -10,25 +10,22 @@
 .jar-summary-item-view {
   max-height: 450px;
   min-height: 556px;
-	width: 250px;
-	padding: 15px;
+	width: 270px;
 	float: right;
 	position: relative;
-	left: -70px;
-}
-
-.jar-summary-title, 
-.morsel-title {
-  font-size: $font-size-scale-1;
+	left: -30px;
   font-weight: $font-weight-light;
 }
 
-.jar-summary-item-view > div {
-	margin-bottom: 10px;
+.jar-summary-title {
+  font-size: $font-size-scale-2;
+  margin-top: 3px;
+  margin-bottom: 18px;
 }
 
-.jar-about-container {
-	min-height: 206px;
+.jar-summary-label {
+	margin-top: 15px;
+	margin-bottom: 5px;
 }
 
 .morsels-collection-view {
@@ -36,10 +33,14 @@
 	width: 967px;
 }
 
+.morsel-info {
+	font-size: 12px;
+}
+
 .morsel-footer {
 	width: 91%;
 	position: absolute;
-	top: 139px;
+	top: 143px;
 
 	ul {
 		margin-bottom: 0px;
@@ -48,4 +49,9 @@
 
 .morsel-actions {
 	float: right;
+
+	li {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 }
