@@ -1,17 +1,24 @@
 define([
-	"marionette", "backbone.subviews", "templates", "collections/Comments"
+	"marionette", "backbone.subviews", "templates", "collections/Comments", "models/Comment"
 ],
-function(Marionette, Subviews, templates, Comments) {
+function(Marionette, Subviews, templates, Comments, Comment) {
 
 	var CommentItemView = Marionette.ItemView.extend({
 		template: templates.CommentItemView,
+
+		events: {
+			"click .reply-button": "onReplyButtonClicked",
+			"click .submit-comment": "onSubmitCommentClicked"
+		},
 
 		ui: {
 			$commentor: ".commentor",
 			$age: ".age",
 			$likes: ".comment-likes",
 			$reply: ".reply-button",
-			$comment: ".user-comment"
+			$comment: ".user-comment",
+			$addPhoto: ".btn-add-photo",
+			$submit: ".submit-comment"
 		},
 
 		onRender: function() {
@@ -19,6 +26,28 @@ function(Marionette, Subviews, templates, Comments) {
 			this.ui.$age.text(this.model.get("age"));
 			this.ui.$likes.text(this.model.get("likes"));
 			this.ui.$comment.text(this.model.get("comment"));
+		},
+
+		onReplyButtonClicked: function() {
+			var elem = this.$el.find("textarea");
+			if (elem.hasClass("hide")) {
+				elem.removeClass("hide").addClass("show");
+			} else {
+				elem.removeClass("show").addClass("hide");
+			}
+		},		
+
+		onSubmitCommentClicked: function() {
+			var text = this.$el.find("textarea").val();
+
+			var data = {
+				author: this.model.get("author"),
+				likes: this.model.get("likes"),
+				comment: text
+			};
+
+			var commentRequest = new Comment(data);
+			
 		}
 	});
 
@@ -30,12 +59,19 @@ function(Marionette, Subviews, templates, Comments) {
 			Subviews.add(this);
 		},
 
+		events: {
+			"click .reply-button": "onReplyButtonClicked",
+			"click .submit-comment": "onSubmitCommentClicked"
+		},
+
 		ui: {
 			$commentor: ".commentor",
 			$age: ".age",
 			$likes: ".comment-likes",
 			$reply: ".reply-button",
-			$comment: ".user-comment"
+			$comment: ".user-comment",
+			$addPhoto: ".btn-add-photo",
+			$submit: ".submit-comment"
 		},
 
 		onRender: function() {
@@ -43,6 +79,23 @@ function(Marionette, Subviews, templates, Comments) {
 			this.ui.$age.text(this.model.get("age"));
 			this.ui.$likes.text(this.model.get("likes"));
 			this.ui.$comment.text(this.model.get("comment"));
+		},
+
+		onReplyButtonClicked: function() {
+			var elem = this.$el.find("textarea");
+			if (elem.hasClass("hide")) {
+				elem.removeClass("hide").addClass("show");
+				this.ui.$addPhoto.removeClass("hide").addClass("show");
+				this.ui.$submit.removeClass("hide").addClass("show");
+			} else {
+				elem.removeClass("show").addClass("hide");
+				this.ui.$addPhoto.removeClass("show").addClass("hide");
+				this.ui.$submit.removeClass("show").addClass("hide");
+			}
+		},
+
+		onSubmitCommentClicked: function() {
+			var something = null;
 		},
 
 		subviewCreators: {
