@@ -2,10 +2,9 @@ define([
 			"backbone", "marionette", "views/NavBarView", 
 		    "views/SearchBarView", "views/CategoriesView", "views/TilesView", "views/ScrollNotificationView", 
 		    "views/SubscriptionView", "views/CreateSubminnowView", "views/MorselsView", "views/CommentsView", 
-		    "collections/Categories", "collections/Morsels", "collections/Comments", "templates", "commentResources"
+		    "collections/Categories", "collections/Morsels", "collections/Comments", "templates"
 ], function(Backbone, Marionette, NavBarView, SearchBarView, CategoriesView, TilesView, ScrollNotificationView, 
-	SubscriptionView, CreateSubminnowView, MorselsView, CommentsView, Categories, Morsels, Comments, templates, 
-	commentResources) {
+	SubscriptionView, CreateSubminnowView, MorselsView, CommentsView, Categories, Morsels, Comments, templates) {
 	"use strict";
 	
 	var MinnowApp = new Marionette.Application();
@@ -13,10 +12,6 @@ define([
 	MinnowApp.addRegions({
 		appRegion: "#app-region"
 	});
-
-	function getComments() {
-		return commentResources.getComments();
-	}
 
 	var AppLayoutView = Marionette.LayoutView.extend({
 	    template: templates.AppLayoutView,
@@ -141,11 +136,10 @@ define([
 			morselsLayoutView.createSubminnow.show(new CreateSubminnowView());
 		},
 
-		onCommentsPageNavigated: function() {
+		onCommentsPageNavigated: function(pComments) {
 			var commentsLayoutView = new CommentsLayoutView();
-			var comments = new Comments(getComments());
 			this.appContent.show(commentsLayoutView);
-			commentsLayoutView.comments.show(new CommentsView({collection: comments}));
+			commentsLayoutView.comments.show(new CommentsView({collection: pComments}));
 		}
 	});
 
