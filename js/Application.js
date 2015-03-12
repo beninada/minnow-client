@@ -2,9 +2,10 @@ define([
 			"backbone", "marionette", "views/NavBarView", 
 		    "views/SearchBarView", "views/CategoriesView", "views/TilesView", "views/ScrollNotificationView", 
 		    "views/SubscriptionView", "views/CreateSubminnowView", "views/MorselsView", "collections/Categories", 
-		    "collections/Morsels", "templates"
+		    "collections/Morsels", "templates", "commentResources"
 ], function(Backbone, Marionette, NavBarView, SearchBarView, CategoriesView, TilesView, ScrollNotificationView, 
-	SubscriptionView, CreateSubminnowView, MorselsView, Categories, Morsels, templates) {
+	SubscriptionView, CreateSubminnowView, MorselsView, Categories, Morsels, templates, 
+	commentResources) {
 	"use strict";
 	
 	var MinnowApp = new Marionette.Application();
@@ -12,6 +13,10 @@ define([
 	MinnowApp.addRegions({
 		appRegion: "#app-region"
 	});
+
+	function getComments() {
+		return commentResources.getComments();
+	}
 
 	var AppLayoutView = Marionette.LayoutView.extend({
 	    template: templates.AppLayoutView,
