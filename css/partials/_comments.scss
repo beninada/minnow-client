@@ -1,10 +1,50 @@
 .comments-container-view {
-	h4 {
-		text-align: center;
-	}
+  font-weight: $font-weight-light;
+
+  .container {
+    width: 625px;
+  }
+
+  .comment-morsel-name {
+    font-weight: $font-weight-light;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 
 	textarea {
 		width: 600px;
 		margin: 0 auto;
 	}
+
+  .cmt-textarea-top {
+    float: left;
+    clear: both;
+  }
+
+  .btn-add-photo,
+  .btn-submit-comment {
+    margin-top: 5px;
+  }
+}
+
+.comment-header-container {
+  .toggle-comments.block-div {
+    margin-left: -20px;
+    font-size: 10px;
+    padding-top: 4px;
+  }
+
+  .block-div {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+}
+
+.comment-container {
+  clear: both;
+}
+
+.comment-box
+.comment-box {
+  margin-left: 25px;
 }
