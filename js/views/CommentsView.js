@@ -29,6 +29,21 @@ function(Marionette, Subviews, templates, Comments) {
 			Subviews.add(this);
 		},
 
+		ui: {
+			$commentor: ".commentor",
+			$age: ".age",
+			$likes: ".comment-likes",
+			$reply: ".reply-button",
+			$comment: ".user-comment"
+		},
+
+		onRender: function() {
+			this.ui.$commentor.text(this.model.get("author"));
+			this.ui.$age.text(this.model.get("age"));
+			this.ui.$likes.text(this.model.get("likes"));
+			this.ui.$comment.text(this.model.get("comment"));
+		},
+
 		subviewCreators: {
 			commentsSubview : function() {
 				var commentsCollection = new Comments(this.model.get("replies"));
