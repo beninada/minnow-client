@@ -103,7 +103,7 @@ define([
 			homeLayoutView.categories.show(new CategoriesView({categories: pCategories}));
 			homeLayoutView.scrollNotification.show(new ScrollNotificationView());
 			homeLayoutView.subscription.show(new SubscriptionView());
-			// homeLayoutView.createSubminnow.show(new CreateSubminnowView());
+			homeLayoutView.createSubminnow.show(new CreateSubminnowView());
 		},
 
 		onSeeAllSubjectsNavigated: function(pJars) {
@@ -115,7 +115,7 @@ define([
 			homeLayoutView.categories.show(new TilesView({collection: pJars}));
 			homeLayoutView.scrollNotification.show(new ScrollNotificationView());
 			homeLayoutView.subscription.show(new SubscriptionView());
-			// homeLayoutView.createSubminnow.show(new CreateSubminnowView());
+			homeLayoutView.createSubminnow.show(new CreateSubminnowView());
 		},
 
 		onMorselsNavigated: function(pMorsels, pJarName) {
