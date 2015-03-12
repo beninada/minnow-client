@@ -11,7 +11,12 @@
     }
   }
 
+  .navbar-collapse {
+    padding: 0;
+  }
+
   .navbar-brand {
+    margin-left: 0 !important;
     padding: 15px 0px 0px 0px;
     font-size: $font-size-scale-1;
   }
@@ -24,6 +29,10 @@
 
   .nav-icon {
     font-size: $font-size-scale-2;
+  }
+
+  .link-log-in {
+    padding-right: 0;
   }
 }
 

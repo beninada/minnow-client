@@ -60,3 +60,10 @@
     padding-right: $gutter-lg / 2;
   }
 }
+
+@media (min-width: $screen-lg) {   
+  .container {
+    width: 960px;
+    padding: 0;
+  }
+}

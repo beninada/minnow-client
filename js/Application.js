@@ -67,7 +67,7 @@ define([
 
 				getCategories: function(pCategories) {
 					pCategories.fetch();
-					this.categoriesTimeout = setTimeout(_.bind(this.getCategories, this), 8000, pCategories);
+					// this.categoriesTimeout = setTimeout(_.bind(this.getCategories, this), 8000, pCategories);
 				},
 
 				getMorsels: function(pMorsels, pJarModel) {
@@ -77,7 +77,7 @@ define([
 						}
 					});
 
-					this.morselsTimeout = setTimeout(_.bind(this.getMorsels, this), 8000, pMorsels, pJarModel);
+					// this.morselsTimeout = setTimeout(_.bind(this.getMorsels, this), 8000, pMorsels, pJarModel);
 				}
 			};
 

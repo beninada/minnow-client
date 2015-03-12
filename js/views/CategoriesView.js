@@ -49,7 +49,7 @@ define([
 
 	var CategoriesView = Marionette.ItemView.extend({
 		template: templates.CategoriesView,
-		className: "cat-container",
+		className: "container",
 
 		initialize: function() {
 			Subviews.add(this);
