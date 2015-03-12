@@ -26,7 +26,7 @@ define([
 			this.ui.$tile.addClass("rank-" + index);
 			this.ui.$title.text(jarName);
 			this.ui.$minnowCount.text(this.model.get("num_subscribers"));
-			this.ui.$age.text(this.model.get("age") + " old");
+			this.ui.$age.text(this.model.get("age"));
 		}
 	});
 

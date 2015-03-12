@@ -26,7 +26,7 @@ function(Marionette, templates, Morsel) {
 		tagName: "a",
 
 		ui: {
-			$morsel: ".morsel-item-view",
+			$morsel: ".tile",
 			$title: ".morsel-title",
 			$views: ".morsel-views",
 			$age: ".morsel-age"
@@ -109,7 +109,7 @@ function(Marionette, templates, Morsel) {
 
 	var MorselsView = Marionette.LayoutView.extend({
 		template: templates.MorselsView,
-		className: "morsels-container",
+		className: "container",
 
 		initialize: function() {
 			this.morsels = this.options.morsels;

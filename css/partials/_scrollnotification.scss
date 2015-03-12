@@ -3,6 +3,8 @@
 	height: 140px;
 
 	.notification-text {
+		font-weight: $font-weight-light;
+		line-height: 14px;
 		width: 140px;
 		margin: 15px auto 0;
 		text-align: center;

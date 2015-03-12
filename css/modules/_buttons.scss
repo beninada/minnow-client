@@ -67,7 +67,7 @@
 
 .btn-options {
   position: absolute;
-  top: 44px;
+  top: 50px;
   left: -67px;
   border-radius: 50%;
   background-color: #e1e1e1;
@@ -88,4 +88,12 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.btn-add-morsel {
+  top: 0;
+}
+
+.btn-subscribe {
+  top: 60px;
 }
