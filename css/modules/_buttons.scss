@@ -114,6 +114,8 @@
 }
 
 .btn-add-photo {
+  float: left;
+  
   &:hover {
     background-color: $lighter-gray;
     @include transition(all 200ms ease-out);
