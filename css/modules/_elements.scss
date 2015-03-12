@@ -5,8 +5,26 @@ body {
 a {
   color: $black;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:hover,
+  &:focus {
     color: inherit;
     cursor: pointer;
+    outline: none;
+    outline-offset: 0;
+  }
+}
+
+textarea {
+  box-shadow: none;
+  border-radius: 2px;
+}
+
+.form-control {
+  &:focus {
+    border-color: inherit;
+    outline: 0;
+    box-shadow: none;
   }
 }

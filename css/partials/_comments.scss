@@ -1,4 +1,5 @@
 .comments-container-view {
+  margin-bottom: 30px;
   font-weight: $font-weight-light;
 
   .container {
@@ -12,7 +13,7 @@
   }
 
 	textarea {
-		width: 600px;
+		width: 100%;
 		margin: 0 auto;
 	}
 
@@ -20,11 +21,10 @@
     float: left;
     clear: both;
   }
+}
 
-  .btn-add-photo,
-  .btn-submit-comment {
-    margin-top: 5px;
-  }
+.comment-first-row {
+  margin-bottom: 30px;
 }
 
 .comment-header-container {
@@ -42,9 +42,10 @@
 
 .comment-container {
   clear: both;
+  padding-top: 10px;
+  margin-bottom: 15px;
 }
 
-.comment-box
-.comment-box {
+.comment-box .comment-box {
   margin-left: 25px;
 }
