@@ -41,13 +41,15 @@ function(Marionette, Subviews, templates, Comments, Comment) {
 			var text = this.$el.find("textarea").val();
 
 			var data = {
+				parent_id: this.model.get("parent_id"),
 				author: this.model.get("author"),
 				likes: this.model.get("likes"),
 				comment: text
 			};
 
 			var commentRequest = new Comment(data);
-			
+			commentRequest.urlRoot = "http://localhost:8080/morsels/" + this.model.get("morsel_id") + "/comments";
+			commentRequest.save();
 		}
 	});
 
@@ -92,16 +94,36 @@ function(Marionette, Subviews, templates, Comments, Comment) {
 				this.ui.$addPhoto.removeClass("show").addClass("hide");
 				this.ui.$submit.removeClass("show").addClass("hide");
 			}
-		},
+		},		
 
 		onSubmitCommentClicked: function() {
-			var something = null;
+			var text = this.$el.find("textarea").val();
+
+			var commentData = {
+				"parent_id": "00000000-0000-0000-0000-000000000000",
+				"author": this.model.get("author"),
+				"likes": this.model.get("likes"),
+				"comment": text
+			};
+
+			$.ajax({
+			  	type: "POST",
+			  	url: "http://localhost:8080/morsels/" + this.model.get("morsel_id") + "/comments",
+			  	data: JSON.stringify(commentData),
+			  	success: function() {
+			  		alert("success");
+			  	},
+			  	dataType: "json",
+			  	contentType: "application/json"
+			});
 		},
 
 		subviewCreators: {
 			commentsSubview : function() {
 				var commentsCollection = new Comments(this.model.get("replies"));
-				return new CommentsCollectionView({collection: commentsCollection});
+				return new CommentsCollectionView({
+					collection: commentsCollection
+				});
 			}
 		}
 	});
@@ -128,7 +150,9 @@ function(Marionette, Subviews, templates, Comments, Comment) {
 
 		subviewCreators: {
 			commentsSubview : function() {
-				return new CommentsCollectionView({collection: this.options.collection});
+				return new CommentsCollectionView({
+					collection: this.options.collection
+				});
 			}
 		}
 	});
